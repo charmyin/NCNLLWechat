@@ -12,6 +12,8 @@ function sha1(str) {
 
 /* GET home page. */
 router.get('/', function(req, res) {
+    var content = req.param("Content");
+    console.log(content);
     var query = req.query;
     var signature = query.signature;
     var echostr = query.echostr;
@@ -33,5 +35,19 @@ router.get('/', function(req, res) {
         res.send("Bad Token!");
     }
 });
+
+/* GET home page. */
+router.post('/', function(req, res) {
+    var content = req.param("Content");
+    console.log(content);
+    res.send("<xml>\
+    <ToUserName><![CDATA[toUser]]></ToUserName>\
+    <FromUserName><![CDATA[fromUser]]></FromUserName>\
+    <CreateTime>12345678</CreateTime>\
+    <MsgType><![CDATA[text]]></MsgType>\
+    <Content><![CDATA[你好]]></Content>\
+    </xml>");
+});
+
 
 module.exports = router;
