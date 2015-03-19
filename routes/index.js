@@ -39,7 +39,7 @@ router.get('/', function(req, res) {
 /* GET home page. */
 router.post('/', function(req, res) {
     var content = req.param("Content");
-    console.log(content);
+    console.log(req.params);
     res.send("<xml>\
     <ToUserName><![CDATA[toUser]]></ToUserName>\
     <FromUserName><![CDATA[fromUser]]></FromUserName>\
