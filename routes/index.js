@@ -2,13 +2,14 @@ var express = require('express');
 var router = express.Router();
 
 var crypto = require('crypto');
+var wechat = require('wechat');
+
 function sha1(str) {
     var md5sum = crypto.createHash('sha1');
     md5sum.update(str);
     str = md5sum.digest('hex');
     return str;
 }
-
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -38,7 +39,44 @@ router.get('/', function(req, res) {
 
 /* GET home page. */
 router.post('/', function(req, res) {
-    var content = req.param("Content");
+
+    wechat('charmyintoken', function (req, res, next) {
+      // message is located in req.weixin
+      var message = req.weixin;
+      if (message.FromUserName === 'diaosi') {
+        // reply with text
+        res.reply('hehe');
+      } else if (message.FromUserName === 'text') {
+        // another way to reply with text
+        res.reply({
+          content: 'text object',
+          type: 'text'
+        });
+      } else if (message.FromUserName === 'hehe') {
+        // reply with music
+        res.reply({
+          type: "music",
+          content: {
+            title: "Just some music",
+            description: "I have nothing to lose",
+            musicUrl: "http://mp3.com/xx.mp3",
+            hqMusicUrl: "http://mp3.com/xx.mp3"
+          }
+        });
+      } else {
+        // reply with thumbnails posts
+        res.reply([
+          {
+            title: 'Come to fetch me',
+            description: 'or you want to play in another way ?',
+            picurl: 'http://nodeapi.cloudfoundry.com/qrcode.jpg',
+            url: 'http://nodeapi.cloudfoundry.com/'
+          }
+        ]);
+      }
+    });
+
+    /*var content = req.param("Content");
     console.log(req.params);
     res.send("<xml>\
     <ToUserName><![CDATA[toUser]]></ToUserName>\
@@ -46,7 +84,7 @@ router.post('/', function(req, res) {
     <CreateTime>12345678</CreateTime>\
     <MsgType><![CDATA[text]]></MsgType>\
     <Content><![CDATA[你好]]></Content>\
-    </xml>");
+    </xml>");*/
 });
 
 
