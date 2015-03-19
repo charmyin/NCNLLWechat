@@ -1,6 +1,15 @@
 var express = require('express');
 var router = express.Router();
 
+var crypto = require('crypto');
+function sha1(str) {
+    var md5sum = crypto.createHash('sha1');
+    md5sum.update(str);
+    str = md5sum.digest('hex');
+    return str;
+}
+
+
 /* GET home page. */
 router.get('/', function(req, res) {
     var query = req.query;
