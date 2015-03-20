@@ -53,10 +53,10 @@ app.use('/', wechat('charmyintoken', function (req, res, next) {
     // reply with thumbnails posts
     res.reply([
       {
-        title: 'Come to fetch me',
-        description: 'or you want to play in another way ?',
-        picurl: 'http://nodeapi.cloudfoundry.com/qrcode.jpg',
-        url: 'http://nodeapi.cloudfoundry.com/'
+        title: '欢迎来到我的小站~',
+        description: '这里你会发现很多好玩的东西！',
+        picurl: 'images/funnydog.jpg',
+        url: 'http://www.baidu.com'
       }
     ]);
   }
