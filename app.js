@@ -30,16 +30,22 @@ app.use('/', wechat('charmyintoken', function (req, res, next) {
   // message is located in req.weixin
   var message = req.weixin;
   console.log(message);
-  if (message.FromUserName === 'diaosi') {
+  if (message.Content === '你从哪里来') {
     // reply with text
-    res.reply('hehe');
-  } else if (message.FromUserName === 'text') {
+    res.reply('南京溧水');
+  } if (message.Content === '你喜欢谁？') {
+    // reply with text
+    res.reply('林婷婷！');
+  }if (message.Content === '有多喜欢？') {
+    // reply with text
+    res.reply('非常非常喜欢！');
+  }else if (message.Content === 'text') {
     // another way to reply with text
     res.reply({
       content: 'text object',
       type: 'text'
     });
-  } else if (message.FromUserName === 'hehe') {
+  } else if (message.Content === 'hehe') {
     // reply with music
     res.reply({
       type: "music",
@@ -56,7 +62,7 @@ app.use('/', wechat('charmyintoken', function (req, res, next) {
       {
         title: '欢迎来到我的小站~',
         description: '这里你会发现很多好玩的东西！',
-        picurl: 'http://182.254.132.226/images/funnydog.jpg',
+        picurl: 'http://182.254.132.226/images/jobs.jpg',
         url: 'http://www.baidu.com'
       }
     ]);
