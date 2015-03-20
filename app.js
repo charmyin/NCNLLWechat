@@ -33,10 +33,10 @@ app.use('/', wechat('charmyintoken', function (req, res, next) {
   if (message.Content === '你从哪里来') {
     // reply with text
     res.reply('南京溧水');
-  } if (message.Content === '你喜欢谁？') {
+  }else if (message.Content === '你喜欢谁？') {
     // reply with text
     res.reply('林婷婷！');
-  }if (message.Content === '有多喜欢？') {
+  }else if (message.Content === '有多喜欢？') {
     // reply with text
     res.reply('非常非常喜欢！');
   }else if (message.Content === 'text') {
