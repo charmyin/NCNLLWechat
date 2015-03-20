@@ -35,7 +35,7 @@ app.use('/', wechat('charmyintoken', function (req, res, next) {
     res.reply('南京溧水');
   }else if (message.Content === '你喜欢谁？') {
     // reply with text
-    res.reply('林婷婷！');
+    res.reply('你猜呢！');
   }else if (message.Content === '有多喜欢？') {
     // reply with text
     res.reply('非常非常喜欢！');
