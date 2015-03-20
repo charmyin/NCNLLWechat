@@ -43,6 +43,7 @@ router.post('/', function(req, res) {
     wechat('charmyintoken', function (req, res, next) {
       // message is located in req.weixin
       var message = req.weixin;
+      console.log(message);
       if (message.FromUserName === 'diaosi') {
         // reply with text
         res.reply('hehe');
