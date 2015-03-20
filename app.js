@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use('/users', users);
 
 
-app.use(connect.query()); // Or app.use(express.query());
+app.use(express.query()); // Or app.use(connect.query());
 app.use('/', wechat('charmyintoken', function (req, res, next) {
   // message is located in req.weixin
   var message = req.weixin;
