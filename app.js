@@ -29,6 +29,7 @@ app.use(express.query()); // Or app.use(connect.query());
 app.use('/', wechat('charmyintoken', function (req, res, next) {
   // message is located in req.weixin
   var message = req.weixin;
+  console.log(message);
   if (message.FromUserName === 'diaosi') {
     // reply with text
     res.reply('hehe');
